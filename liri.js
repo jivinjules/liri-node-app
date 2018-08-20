@@ -95,7 +95,7 @@ function getSong(){
   }
 
 // * `movie-this`
-function getMovie() {
+function getMovie(liri) {
     var queryUrl = "http://www.omdbapi.com/?t=" + liri + "&y=&plot=short&apikey=trilogy";
 
     // This line is just to help us debug against the actual URL.
@@ -110,12 +110,13 @@ function getMovie() {
         console.log("Title: " + JSON.parse(body).Title);
         console.log("Release Year: " + JSON.parse(body).Year);
         console.log("IMdB Rating: " + JSON.parse(body).imdbRating);
+        console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value);
         console.log("Country: " + JSON.parse(body).Country);
         console.log("Language: " + JSON.parse(body).Language);
         console.log("Plot: " + JSON.parse(body).Plot);
         console.log("Actors: " + JSON.parse(body).Actors);
-        console.log("Rotten Tomatoes Rating: " + JSON.parse(body).TomatoRating);
-        console.log("Rotten Tomatoes URL: " + JSON.parse(body).TomatoURL);
+       
+   
       }
     });
     
