@@ -1,22 +1,19 @@
 require("dotenv").config();
 
 //Gets data from keys file (spotify keys)
-var keysFile = require("./keys.js");
+var keys = require("./keys.js");
 
 //npm request for bandsintown
 // var bandsintown = require('bandsintown')(APP_ID);
 
-//npm request for OMDB
-var omdb
-
 //npm request for Spotify object in keys file
-var spotify = new Spotify(keys.spotify);
+// var spotify = new Spotify(keys.spotify);
 
 //includes the request npm package
 var request = require('request');
 
 //npm for Spotify
-var Spotify = require('node-spotify-api');
+// var Spotify = require('node-spotify-api');
 
 // Global Variables for user inputs!!
 
@@ -24,15 +21,15 @@ var Spotify = require('node-spotify-api');
 //Empty variable for storing the  name
 var liri = "";
 
-//All of the args will be stored in an array
+// //All of the args will be stored in an array
 var nodeArgs = process.argv;
 
 //This is what the user will type in to let liri know what to do (see below)
 var command = process.argv[2];
 
-//Loop through the words entered in the node Arg and add +'s to store together
-for (var i = 2; i < nodeArgs.length; i++)  {
-    if (i > 2 && i < nodeArgs.length) {
+// //Loop through the words entered in the node Arg and add +'s to store together
+for (var i = 3; i < nodeArgs.length; i++)  {
+    if (i > 3 && i < nodeArgs.length) {
         liri = liri + "+" + nodeArgs[i];
     } else {
         liri +=nodeArgs[i];
@@ -44,7 +41,7 @@ for (var i = 2; i < nodeArgs.length; i++)  {
 //bandsintown
 switch(command){
     case "concert-this":
-      showConcerts();
+      getConcert();
     break;
   
     //spotify
@@ -72,7 +69,7 @@ switch(command){
     break;
   
     default:
-      console.log("{Please enter a command: concert-this, spotify-this-song, movie-this, do-what-it-says}");
+      console.log("Please enter a command: concert-this, spotify-this-song, movie-this, do-what-it-says");
     break;
   }
 
@@ -81,13 +78,48 @@ switch(command){
 
 //Commands for Liri to accomplish
 // * `concert-this`
+function getConcert() {
+
+}
 
 // * `spotify-this-song`
-function getSong (song){
+function getSong(){
+    spotify.search({ type: 'track', query: liri }, function(err, data) {
+        if (err) {
+          return console.log('Error occurred: ' + err);
+        }
+       
+      console.log(data); 
+      });
 
   }
 
 // * `movie-this`
+function getMovie() {
+    var queryUrl = "http://www.omdbapi.com/?t=" + liri + "&y=&plot=short&apikey=trilogy";
+
+    // This line is just to help us debug against the actual URL.
+    console.log(queryUrl);
+    
+    request(queryUrl, function(error, response, body) {
+    
+      // If the request is successful
+      if (!error && response.statusCode === 200) {
+    
+        // Parse the body of the site and recover just the info
+        console.log("Title: " + JSON.parse(body).Title);
+        console.log("Release Year: " + JSON.parse(body).Year);
+        console.log("IMdB Rating: " + JSON.parse(body).imdbRating);
+        console.log("Country: " + JSON.parse(body).Country);
+        console.log("Language: " + JSON.parse(body).Language);
+        console.log("Plot: " + JSON.parse(body).Plot);
+        console.log("Actors: " + JSON.parse(body).Actors);
+        console.log("Rotten Tomatoes Rating: " + JSON.parse(body).TomatoRating);
+        console.log("Rotten Tomatoes URL: " + JSON.parse(body).TomatoURL);
+      }
+    });
+    
+}
 
 //Do What it says (aka play the Backstreet Boys from random.txt)
 
