@@ -3,8 +3,14 @@ require("dotenv").config();
 //Gets data from keys file (spotify keys)
 var keys = require('./keys.js');
 
+//var request for file system to access random.txt
+var fs = require('fs');
+
+//var request for moment.js for concert date
+var moment = require('moment');
+
 //npm request for bandsintown
-// var bandsintown = require('bandsintown')(APP_ID);
+var bandsintown = require('bandsintown')(APP_ID = 'codingbootcamp');
 
 //includes the request npm package
 var request = require('request');
@@ -12,10 +18,10 @@ var request = require('request');
 //npm for Spotify
 var Spotify = require('node-spotify-api');
 
-// GLOBAL VARIABLES FOR USER INPUT
+///////////// GLOBAL VARIABLES FOR USER INPUT//////////
 
 //This sets up how a user can input a name that has more than one word
-//Empty variable for storing the  name
+//Empty variable for storing the name
 var liri = "";
 
 // //All of the args will be stored in an array
@@ -35,6 +41,7 @@ for (var i = 3; i < nodeArgs.length; i++) {
 
 //switch case for different Liri Commands. I had to google switch/case.
 //The command is the var command above (aka "line 25")
+
 //bandsintown
 switch (command) {
     case "concert-this":
@@ -46,7 +53,7 @@ switch (command) {
         if (liri) {
             getSong(liri);
         } else {
-            getSong("The Sign");
+            getSong("The Sign Ace of Base");
         }
         break;
 
@@ -59,7 +66,7 @@ switch (command) {
         }
         break;
 
-    //The do-what-it-says to play I Want It That Way inside random.txt
+    //The do-what-it-says links to I Want It That Way inside random.txt
     //I personally would've picked *NSync instead of Backstreet Boys
     case "do-what-it-says":
         doWhatItSays();
@@ -73,14 +80,31 @@ switch (command) {
 //Commands for Liri to accomplish
 // * `concert-this`
 function getConcert() {
+    var query = "https://rest.bandsintown.com/artists/" + liri + "/events?app_id=codingbootcamp"
+    bandsintown
 
+    request(query, function (error, response, body) {
+        if (error) {
+            console.log("Error! Try again");
+        } else {
+            var concerts = JSON.parse(body);
+
+            //This loops through all the concerts listed    
+            for (let i = 0; i < concerts.length; i++) {
+                //This prints out the concert information and puts date in correct format
+                console.log('Venue Name: ' + concerts[i].venue.name);
+                console.log('Venue Location: ' + concerts[i].venue.city);
+                console.log('Concert Date: ' + moment(concerts[i].datetime).format('MM/DD/YYYY'));
+            }
+        };
+    });
 }
 
 // * `spotify-this-song`
 function getSong(liri) {
     //constructor data for spotify
     var spotify = new Spotify(keys.spotify);
-  
+
     //query for spotify search and console log the results
     spotify.search({ type: 'track', query: liri }, function (err, data) {
         if (err) {
@@ -93,7 +117,7 @@ function getSong(liri) {
             console.log("Song Name: " + song.name);
             console.log("Preview Link: " + song.preview_url);
             console.log("Album Name: " + song.album.name);
-             }
+        }
 
     });
 
@@ -120,8 +144,8 @@ function getMovie(liri) {
             console.log("Language: " + JSON.parse(body).Language);
             console.log("Plot: " + JSON.parse(body).Plot);
             console.log("Actors: " + JSON.parse(body).Actors);
-
-
+        } else {
+            console.log(error);
         }
     });
 
