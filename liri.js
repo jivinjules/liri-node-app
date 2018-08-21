@@ -127,9 +127,6 @@ function getSong(liri) {
 function getMovie(liri) {
     var queryUrl = "http://www.omdbapi.com/?t=" + liri + "&y=&plot=short&apikey=trilogy";
 
-    // This line is just to help us debug against the actual URL.
-    console.log(queryUrl);
-
     request(queryUrl, function (error, response, body) {
 
         // If the request is successful
