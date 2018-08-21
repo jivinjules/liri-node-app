@@ -87,14 +87,13 @@ function getConcert() {
         if (error) {
             console.log("Error! Try again");
         } else {
-            var concerts = JSON.parse(body);
-
+     
             //This loops through all the concerts listed    
-            for (let i = 0; i < concerts.length; i++) {
+            for (let i = 0; i < JSON.parse(body).length; i++) {
                 //This prints out the concert information and puts date in correct format
-                console.log('Venue Name: ' + concerts[i].venue.name);
-                console.log('Venue Location: ' + concerts[i].venue.city);
-                console.log('Concert Date: ' + moment(concerts[i].datetime).format('MM/DD/YYYY'));
+                console.log('Venue Name: ' + JSON.parse(body)[i].venue.name);
+                console.log('Venue Location: ' + JSON.parse(body)[i].venue.city);
+                console.log('Concert Date: ' + moment(JSON.parse(body)[i].datetime).format('MM/DD/YYYY'));
             }
         };
     });
