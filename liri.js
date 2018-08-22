@@ -87,14 +87,30 @@ function getConcert() {
         if (error) {
             console.log("Error! Try again");
         } else {
-     
+            //var to contain JSON data
+            var jsonData = JSON.parse(body);
+            var divider = "\n----------------\n\n";
+
             //This loops through all the concerts listed    
-            for (let i = 0; i < JSON.parse(body).length; i++) {
+            for (let i = 0; i < jsonData.length; i++) {
                 //This prints out the concert information and puts date in correct format
-                console.log('Venue Name: ' + JSON.parse(body)[i].venue.name);
-                console.log('Venue Location: ' + JSON.parse(body)[i].venue.city);
-                console.log('Concert Date: ' + moment(JSON.parse(body)[i].datetime).format('MM/DD/YYYY'));
+                //All information is put into an object to print to log.txt and to be console-logged
+                var concertData = [
+                    'Venue Name: ' + jsonData[i].venue.name,
+                    'Venue Location: ' + jsonData[i].venue.city,
+                    'Concert Date: ' + moment(jsonData[i].datetime).format('MM/DD/YYYY')
+                ].join("\n\n")
+
+                console.log(concertData);
+            
+                // Append songData and the divider to log.txt, print showData to the console
+                fs.appendFile("log.txt", concertData + divider, function (err) {
+                    if (err) throw err;
+                });
+
             }
+
+
         };
     });
 }
@@ -109,13 +125,23 @@ function getSong(liri) {
         if (err) {
             return console.log('Error occurred: ' + err);
         } else {
-            //var to cut down typing for spotify
+            //var to cut down typing for spotify and turn into object for log.txt and easy console
+            var divider = "\n----------------\n\n";
             var song = data.tracks.items[0];
 
-            console.log("Artist(s): " + song.artists[0].name);
-            console.log("Song Name: " + song.name);
-            console.log("Preview Link: " + song.preview_url);
-            console.log("Album Name: " + song.album.name);
+            var songData = [
+                "Artist(s): " + song.artists[0].name,
+                "Song Name: " + song.name,
+                "Preview Link: " + song.preview_url,
+                "Album Name: " + song.album.name
+            ].join("\n\n");
+
+            console.log(songData);
+
+            // Append songData and the divider to log.txt, print showData to the console
+            fs.appendFile("log.txt", songData + divider, function (err) {
+                if (err) throw err;
+            });
         }
 
     });
@@ -131,17 +157,32 @@ function getMovie(liri) {
         // If the request is successful
         if (!error && response.statusCode === 200) {
 
-            // Parse the body of the site and recover just the info
-            console.log("Title: " + JSON.parse(body).Title);
-            console.log("Release Year: " + JSON.parse(body).Year);
-            console.log("IMdB Rating: " + JSON.parse(body).imdbRating);
-            console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value);
-            console.log("Country: " + JSON.parse(body).Country);
-            console.log("Language: " + JSON.parse(body).Language);
-            console.log("Plot: " + JSON.parse(body).Plot);
-            console.log("Actors: " + JSON.parse(body).Actors);
+            var divider = "\n----------------\n\n";
+            var jsonData = JSON.parse(body);
+
+            // Parse the body of the site and recover just the info into an object for easy writing to log.txt
+            var movieData = [
+                "Title: " + jsonData.Title,
+                "Release Year: " + jsonData.Year,
+                "IMdB Rating: " + jsonData.imdbRating,
+                "Rotten Tomatoes Rating: " + jsonData.Ratings[1].Value,
+                "Country: " + jsonData.Country,
+                "Language: " + jsonData.Language,
+                "Plot: " + jsonData.Plot,
+                "Actors: " + jsonData.Actors
+
+            ].join("\n\n");
+
+            //console logging the results
+            console.log(movieData);
+
+            // Append movieData and the divider to log.txt, print showData to the console
+            fs.appendFile("log.txt", movieData + divider, function (err) {
+                if (err) throw err;
+                console.log(movieData);
+            });
         } else {
-            console.log(error);
+            console.log("Error: " + error);
         }
     });
 

@@ -1,0 +1,139 @@
+Title: Coco
+Release Year: 2017
+IMdB Rating: 8.4
+Rotten Tomatoes Rating: 97%
+----------------
+
+Title: Jaws
+
+
+Release Year: 1975
+
+
+IMdB Rating: 8.0
+
+
+Rotten Tomatoes Rating: 97%
+
+
+Country: USA
+
+
+Language: English
+
+
+Plot: A local sheriff, a marine biologist and an old seafarer team up to hunt down a great white shark wrecking havoc in a beach resort.
+
+
+Actors: Roy Scheider, Robert Shaw, Richard Dreyfuss, Lorraine Gary
+----------------
+Title: Titanic
+
+Release Year: 1997
+
+IMdB Rating: 7.8
+
+Rotten Tomatoes Rating: 88%
+
+Country: USA
+
+Language: English, Swedish
+
+Plot: A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.
+
+Actors: Leonardo DiCaprio, Kate Winslet, Billy Zane, Kathy Bates
+----------------
+Title: Frozen
+Release Year: 2013
+IMdB Rating: 7.5
+Rotten Tomatoes Rating: 90%
+Country: USA
+Language: English, Norwegian
+Plot: When the newly-crowned Queen Elsa accidentally uses her power to turn things into ice to curse her home in infinite winter, her sister Anna teams up with a mountain man, his playful reindeer, and a snowman to change the weather condition.
+Actors: Kristen Bell, Idina Menzel, Jonathan Groff, Josh Gad
+----------------
+Title: Tangled
+
+Release Year: 2010
+
+IMdB Rating: 7.8
+
+Rotten Tomatoes Rating: 89%
+
+Country: USA
+
+Language: English
+
+Plot: The magically long-haired Rapunzel has spent her entire life in a tower, but now that a runaway thief has stumbled upon her, she is about to discover the world for the first time, and who she really is.
+
+Actors: Mandy Moore, Zachary Levi, Donna Murphy, Ron Perlman
+----------------
+Artist(s): Bad Wolves
+
+Song Name: Zombie
+
+Preview Link: https://p.scdn.co/mp3-preview/4978147ac417f06049825616fdd66cabdb566ae7?cid=be153a1cb32f46c791db60f7bbb57dcc
+
+Album Name: Zombie
+----------------
+
+Artist(s): Zedd
+
+Song Name: Happy Now
+
+Preview Link: null
+
+Album Name: Happy Now
+----------------
+
+Artist(s): Imagine Dragons
+
+Song Name: Whatever It Takes
+
+Preview Link: null
+
+Album Name: Evolve
+----------------
+
+Venue Name: Ascend Amphitheater
+
+Venue Location: Nashville
+
+Concert Date: 08/21/2018
+----------------
+
+Venue Name: BMO Harris Pavilion
+
+Venue Location: Milwaukee
+
+Concert Date: 08/23/2018
+----------------
+
+Venue Name: Ravinia Festival
+
+Venue Location: Highland Park
+
+Concert Date: 08/22/2018
+----------------
+
+Venue Name: The Lawn at White River
+
+Venue Location: Indianapolis
+
+Concert Date: 08/25/2018
+----------------
+
+Venue Name: Kauffman Center for the Performing Arts
+
+Venue Location: Kansas City
+
+Concert Date: 09/24/2018
+----------------
+
+Venue Name: Kauffman Center for the Performing Arts
+
+Venue Location: Kansas City
+
+Concert Date: 09/25/2018
+----------------
+
